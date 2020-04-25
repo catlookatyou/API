@@ -56,6 +56,6 @@ class UserController extends Controller
         $user = Auth::user();
         $token = $request->user()->token();
         $bearerToken = $request->bearerToken(); 
-        return response()->json(['success' => $user, 'bearerToken' => $bearerToken, 'token' => $token], $this-> successStatus); 
+        return response()->json(['success' => $user, 'bearerToken' => $bearerToken, 'token' => $token], $this->successStatus); 
     } 
 }
