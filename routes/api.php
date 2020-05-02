@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+/*
+    jwt
+    //register
+    http://localhost:8000/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
+    //login and get token
+    http://localhost:8000/api/login?email=cat@mail.com&password=12345678 
+    //add bearer to access
+    http://localhost:8000/api/details
+
+    password
+    //create client and get id and secret
+    php artisan passport:client --password
+    //use client information to get token
+    http://localhost:8000/oauth/token
+    //add bearer to access
+    http://localhost:8000/api/details
+*/
 Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
