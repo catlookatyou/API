@@ -1,23 +1,23 @@
 
 #### 1. jwt(in auth.php , 'driver' => 'jwt')
 
-    -register
+    - register
     http://localhost:8000/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
     [name, email, password, c_password]
 
-    -login and get token
+    - login and get token
     http://localhost:8000/api/login?email=cat@mail.com&password=12345678 
     [email, password]
 
-    -add bearer to access
+    - add bearer to access
     http://localhost:8000/api/details
     [Accept => application/json, Authorization => Bearer token]
 
-    -refresh
+    - refresh
     http://localhost:8000/api/refresh
     [Accept => application/json, Authorization => Bearer token]
 
-    -logout
+    - logout
     http://localhost:8000/api/logout
     [Accept => application/json, Authorization => Bearer token]- register
     http://localhost:8000/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
