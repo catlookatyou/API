@@ -1,7 +1,7 @@
 
 ###### 1. jwt(in auth.php , 'driver' => 'jwt')
 
-    -register
+   -register
     http://localhost:8000/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
     [name, email, password, c_password]
 
