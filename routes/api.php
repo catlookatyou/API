@@ -77,6 +77,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'UserController@login');
 Route::post('register', 'UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
+    Route::apiResource('book', 'api\BookController');
     Route::get('time', 'ApiController@time');
     Route::post('refresh', 'UserController@refresh');
     Route::post('logout', 'UserController@logout');
