@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\User; 
 use Illuminate\Support\Facades\Auth; 
 use Validator;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller 
 {
@@ -29,32 +30,47 @@ class UserController extends Controller
         return response()->json(['success'=>$success], $this->successStatus); 
     }
 
-    public function login(){ 
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
-            $user = Auth::user(); 
-            $success['token'] =  $user->createToken('MyApp')->accessToken; 
-            return response()->json(['success' => $success], $this->successStatus); 
-        } 
-        else{ 
+    public function login(Request $request){
+        $input = $request->only('email', 'password');
+        $token = null;
+
+        if(!$token = auth('api')->attempt($input)){ 
             return response()->json(['error'=>'Unauthorised'], 401); 
         } 
+        else{  
+            $success['token'] =  $token; 
+            return response()->json(['success' => $success], $this->successStatus); 
+        } 
     }
 
-    public function logout(Request $request)
+    public function refresh()
     {
-        //Auth::guard('api')->logout();
-        $token = $request->user()->token();
-        $token->revoke();
-        $token->delete();
-        $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus); 
+        return $this->respondWithToken(auth('api')->refresh());
     }
 
-    public function details(Request $request) 
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
+    }
+
+    public function logout()
+    {
+        auth('api')->logout();
+
+        return response()->json(['message' => 'Successfully logged out']);
+        //Auth::guard('api')->logout();
+        //return response()->json(['success' => $user], $this->successStatus); 
+    }
+
+    public function details() 
     { 
-        $user = Auth::guard('api')->user();
-        $token = $request->user()->token();
-        $bearerToken = $request->bearerToken(); 
-        return response()->json(['success' => $user, 'bearerToken' => $bearerToken, 'token' => $token], $this->successStatus); 
+        //$user = Auth::guard('api')->user();
+        //$token = JWTAuth::user()->token();
+        //$bearerToken = JWTAuth::bearerToken();
+        return response()->json(['success' => auth('api')->user()], $this->successStatus); 
     } 
 }

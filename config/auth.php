@@ -42,7 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'passport',
+            //'driver' => 'passport', //password and auth authorization_code
+            'driver' => 'jwt', //jwt
             'provider' => 'users',
             'hash' => false,
         ],
