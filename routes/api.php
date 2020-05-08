@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,22 @@ use Illuminate\Support\Facades\Route;
     http://localhost:8000/oauth/token
     [grant_type => refresh_token, refresh_token, client_id, client_secret, scope]
     ----------------------------------------------------------------
-    3. authorization_code(in auth.php , 'driver' => 'passport')
+    3. personal(in auth.php , 'driver' => 'passport')
+    //create client
+    php artisan passport:client --personal
+
+    //create token for user(in api.php)
+    Route::get('personal_token', function(){
+        $user = App\User::find(1);
+        $token = $user->createToken('catlookatyou')->accessToken;
+        return $token;
+    });
+
+    //add bearer to access
+    http://localhost:8000/api/details
+    [Accept => application/json, Authorization => Bearer token]
+    ----------------------------------------------------------------
+    4. authorization_code(in auth.php , 'driver' => 'passport')
     in api server(localhost:8000):
     //create client、client_redirect_uri...
     php artisan passport:client
@@ -82,6 +98,11 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('refresh', 'UserController@refresh');
     Route::post('logout', 'UserController@logout');
     Route::post('details', 'UserController@details');
+});
+Route::get('personal_token', function(){
+    $user = App\User::find(1);
+    $token = $user->createToken('catlookatyou')->accessToken;
+    return $token;
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
