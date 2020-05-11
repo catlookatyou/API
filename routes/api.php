@@ -2,8 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Auth;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -90,8 +88,8 @@ use Auth;
     [grant_type => refresh_token, refresh_token, client_id, client_secret, scope]
 */
 
-Route::post('login', 'UserController@login');
-Route::post('register', 'UserController@register');
+Route::post('login', 'UserController@login')->name('api.login');
+Route::post('register', 'UserController@register')->name('api.resgister');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::apiResource('book', 'api\BookController');
     Route::get('time', 'ApiController@time');
