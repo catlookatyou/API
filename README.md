@@ -1,5 +1,33 @@
 ## API
 
+#### restful
+    
+    GET        /book
+    GET        /book/{id}
+    POST       /book
+    PUT/PATCH  /book/{id}
+    DELETE     /book/{id}
+    
+#### checktime
+
+   - http://localhost:8000/api/time?q=next wednesday
+   
+    input: q = non-number string or datetime(yyyy-mm-dd)
+    output: q、dt(yyyy-mm-dd)、now(current datetime)、diffForHumans(ex. 3 days from now)
+    
+   - http://localhost:8000/api/time?q1=2012-5-30&q2=64&type=addDays
+    
+    input: q1 = datetime, q2 = number, type = addYears subYears addMonths subMonths addDays subDays addWeeks subWeeks 
+                                              addHours subHours addMinutes subMinutes addSeconds subSeconds
+    output: q1, q2, type, time(datetime after compute)
+    
+   - http://localhost:8000/api/time?q1=2012-5-30&q2=2011-2-10
+    
+    input: q1 = datetime, q2 = datetime
+    output: q1, q2, dt1(q1 datetime string)、 dt2(q2 datetime string)、 years(years difference between two query)、
+            months(months difference between two query)、 days(days difference between two query)、
+            hours(hours difference between two query)、 mins(mins difference between two query)
+
 ## Authentication
 
 #### 1. jwt (in auth.php , 'driver' => 'jwt') //1st party
