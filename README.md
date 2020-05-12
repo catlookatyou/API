@@ -1,6 +1,6 @@
 ## API
 
-#### restful
+#### 1. restful
     
     GET        /book
     GET        /book/{id}
@@ -8,7 +8,7 @@
     PUT/PATCH  /book/{id}
     DELETE     /book/{id}
     
-#### checktime
+#### 2. checktime
 
    - /api/time?q=next wednesday
    
