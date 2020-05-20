@@ -4,8 +4,8 @@
 本專案使用laravel開發API，並實作API的認證方式。
 
 ### 功能介紹
-1.	[API](### API)
-2.	[Authentication](### Authentication)
+1.	[API](# API)
+2.	[Authentication](# Authentication)
 
 ### 學到的技術
 1.	基本RESTful API的開發及測試
