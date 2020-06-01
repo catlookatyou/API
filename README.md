@@ -1,7 +1,7 @@
 ## API server
 
 ### 概述
-本專案使用laravel開發API，並實作API的認證方式。
+本專案使用laravel開發API，並實作API的認證方式(用postman測試認證)。
 
 ### 功能介紹
 1.	[API](#API)
