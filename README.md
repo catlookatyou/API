@@ -1,7 +1,7 @@
 ## API server
 
 ### 概述
-本專案使用laravel開發API，並實作API的認證方式(用postman測試認證)。
+本專案使用laravel開發API，並實作API的認證方式(預設為authorization_code，更改方式需調整config/auth.php，可用postman測試認證)。
 
 ### 功能介紹
 1.	[API](#API)
@@ -11,6 +11,7 @@
 1.	基本RESTful API的開發及測試
 2.	利用laravel carbon套件開發API
 3.	實作4種API的認證方式(密碼授權、認證碼授權、個人授權、JWT)
+4.  部署至heroku
 
 ## 
 
