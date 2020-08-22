@@ -53,29 +53,29 @@
 
    - register
     
-    http://localhost:8000/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
+    http://mighty-woodland-37550.herokuapp.com/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
     [name, email, password, c_password]
 
    - login and get token
     
-    http://localhost:8000/api/login?email=cat@mail.com&password=12345678 
+    http://mighty-woodland-37550.herokuapp.com/api/login?email=cat@mail.com&password=12345678 
     [email, password]
 
    - add bearer to access
     
-    http://localhost:8000/api/details
+    http://mighty-woodland-37550.herokuapp.com/api/details
     [Accept => application/json, Authorization => Bearer token]
 
    - refresh
     
-    http://localhost:8000/api/refresh
+    http://mighty-woodland-37550.herokuapp.com/api/refresh
     [Accept => application/json, Authorization => Bearer token]
 
    - logout
     
-    http://localhost:8000/api/logout
+    http://mighty-woodland-37550.herokuapp.com/api/logout
     [Accept => application/json, Authorization => Bearer token]- register
-    http://localhost:8000/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
+    http://mighty-woodland-37550.herokuapp.com/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
     [name, email, password, c_password]
     
 #### 2. password (in auth.php , 'driver' => 'passport') //1st party
@@ -86,17 +86,17 @@
 
    - use client information to get token
    
-    http://localhost:8000/oauth/token
+    http://mighty-woodland-37550.herokuapp.com/oauth/token
     [grant_type => password, client_id, client_secret, username, password, scope]
 
    - add bearer to access
     
-    http://localhost:8000/api/details
+    http://mighty-woodland-37550.herokuapp.com/api/details
     [Accept => application/json, Authorization => Bearer token]
 
    - refresh
     
-    http://localhost:8000/oauth/token
+    http://mighty-woodland-37550.herokuapp.com/oauth/token
     [grant_type => refresh_token, refresh_token, client_id, client_secret, scope]
     
 #### 3. personal(in auth.php , 'driver' => 'passport') //1st party, 2nd party
@@ -114,12 +114,12 @@
 
    - add bearer to access
     
-    http://localhost:8000/api/details
+    http://mighty-woodland-37550.herokuapp.com/api/details
     [Accept => application/json, Authorization => Bearer token]
 
 #### 4. authorization_code (in auth.php , 'driver' => 'passport') //3rd party
 
-   in api server(localhost:8000):
+   in api server(mighty-woodland-37550.herokuapp.com):
    
    - create client、client_redirect_uri...
     
@@ -129,20 +129,20 @@
     
    - get authorization_code
     
-    http://localhost:8000/oauth/authorize?client_id=&redirect_uri=&response_type=code&scope=
+    http://mighty-woodland-37550.herokuapp.com/oauth/authorize?client_id=&redirect_uri=&response_type=code&scope=
    -in self redirect_uri accept request and get authorization_code
 
    - add code and get bearer token
    
-    http://localhost:8000/oauth/token
+    http://mighty-woodland-37550.herokuapp.com/oauth/token
     [grant_type => authorization_code, client_id, client_secret, redirect_uri, code]
 
    - add bearer to access
    
-    http://localhost:8000/api/details
+    http://mighty-woodland-37550.herokuapp.com/api/details
     [Accept => application/json, Authorization => Bearer token]
 
    - refresh
     
-    http://localhost:8000/oauth/token
+    http://mighty-woodland-37550.herokuapp.com/oauth/token
     [grant_type => refresh_token, refresh_token, client_id, client_secret, scope]
