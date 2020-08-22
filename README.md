@@ -17,7 +17,7 @@
 
 <h3 id="API">API<h3>
 
-#### 1. restful
+#### 1. restful (需token)
     
     GET        /book
     GET        /book/{id}
