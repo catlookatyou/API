@@ -1,7 +1,7 @@
 ## API server
 
 ### 概述
-本專案使用laravel開發API，並實作API的認證方式(預設為authorization_code，更改方式需調整config/auth.php，可用postman測試認證)。
+本專案使用laravel開發API，並實作API的認證方式(預設為passport，若更改jwt需調整config/auth.php，可用postman測試認證)。
 
 ### 功能介紹
 1.	[API](#API)
