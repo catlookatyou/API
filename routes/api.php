@@ -90,9 +90,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', 'UserController@login')->name('api.login');
 Route::post('register', 'UserController@register')->name('api.resgister');
+Route::get('time', 'ApiController@time');
 Route::group(['middleware' => 'auth:api'], function(){
     Route::apiResource('book', 'api\BookController');
-    Route::get('time', 'ApiController@time');
     Route::post('refresh', 'UserController@refresh');
     Route::post('logout', 'UserController@logout');
     Route::post('details', 'UserController@details');
