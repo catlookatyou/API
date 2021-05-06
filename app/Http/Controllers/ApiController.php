@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Log;
+use App\Book;
 //use Illuminate\Support\Str;
 
 class ApiController extends Controller
 {
+    public function testlog(){
+        //Log::info("test log!");
+        $book = Book::all();
+        //$book['test'] = 'test';
+        $count = count($book);
+        $book[0]->test = 'test';  //[]array, {}object, x[]->y=z (array x中的物件新增key=y, value=z)
+        $book[$count] = 'test2';
+        return response()->json(['result'=>true, 'book'=>$book]);
+    }
+
     public function time(Request $request){
         if($request->has('q')){
             //non-number string or datetime

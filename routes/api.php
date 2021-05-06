@@ -91,12 +91,14 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'UserController@login')->name('api.login');
 Route::post('register', 'UserController@register')->name('api.resgister');
 Route::get('time', 'ApiController@time');
+Route::get('testlog','ApiController@testlog')->name('testlog');
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::apiResource('book', 'api\BookController');
+    //Route::apiResource('book', 'api\BookController');
     Route::post('refresh', 'UserController@refresh');
     Route::post('logout', 'UserController@logout');
     Route::post('details', 'UserController@details');
 });
+Route::apiResource('book', 'api\BookController');
 Route::get('personal_token', function(){
     $user = App\User::find(1);
     $token = $user->createToken('catlookatyou')->accessToken;
