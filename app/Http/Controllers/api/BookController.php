@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Book;
+use App\Author;
 use App\Http\Resources\Book as BookResource;
 
 class BookController extends Controller
@@ -16,9 +17,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        //return Book::get();
+        //渴求式加載
+        //return Book::with('author')->get();
         //Resource Collection
-        return BookResource::collection(Book::all());
+        $books = Book::with('author')->get();
+        return BookResource::collection($books);
     }
 
     /**
@@ -44,7 +47,8 @@ class BookController extends Controller
     {
         //return Book::find($id);
         //Resource
-        return new BookResource(Book::find($id));
+        $book = Book::with('author')->find($id);
+        return new BookResource($book);
     }
 
     /**

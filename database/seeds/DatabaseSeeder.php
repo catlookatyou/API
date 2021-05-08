@@ -25,7 +25,23 @@ class DatabaseSeeder extends Seeder
                 'name' => 'test',
                 'content' => 'test',
                 'price'=>99,
-            ]
+                'author_id'=>1
+            ],
+            [
+                'name' => 'helloworld',
+                'content' => 'hihi',
+                'price'=>22,
+                'author_id'=>1
+            ],
+        ]);
+
+        DB::table('authors')->insert([
+            [
+                'name' => 'catlookatyou',
+            ],
+            [
+                'name' => 'gogoro',
+            ],
         ]);
     }
 }
