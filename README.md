@@ -74,9 +74,7 @@
    - logout
     
     http://mighty-woodland-37550.herokuapp.com/api/logout
-    [Accept => application/json, Authorization => Bearer token]- register
-    http://mighty-woodland-37550.herokuapp.com/api/register?name=cat&email=cat@mail.com&password=12345678&c_password=12345678
-    [name, email, password, c_password]
+    [Accept => application/json, Authorization => Bearer token]
     
 #### 2. password (in auth.php , 'driver' => 'passport') //1st party
 
